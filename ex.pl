@@ -425,3 +425,34 @@ matrix(dragon, dragon, yes).
 %			
 %		d). o tipo dragon tem alguma vantagem de combate contra o tipo ice?
 %			matrix(dragon, ice, VANTAGEM).
+
+
+
+% 1.6. escreve regras
+%   a) O Pokémon Bulbasaur é eficaz contra o Charmander? Considere os tipos dos Pokémon como determinantes para apurar a sua eficácia em combate
+%   pokemon(_, bulbasaur, TYPE1, TYPE2, _, _, _, _, _, _, _, _, _), 
+%   pokemon(_, charmander, TYPE3, TYPE4, _, _, _, _, _, _, _, _, _), 
+%   (matrix(TYPE1, TYPE3, yes); matrix(TYPE2, TYPE4, yes); matrix(TYPE1, TYPE4, yes); matrix(TYPE2, TYPE3, yes)).
+
+
+%   b) Quais são os Pokémon do tipo normal com valor de ataque igual a 60?
+%   (pokemon(_, NAME, normal, _, _, _, ATTACK, _, _, _, _, _, _); 
+%   pokemon(_, NAME, _, normal, _, _, ATTACK, _, _, _, _, _, _)), 
+%   ATTACK==60.
+
+
+%   c) Quais são os Pokémon da 2ª geração do tipo bug que possuem um valor de defesa superior ao valor de ataque?
+%   (pokemon(_, NAME, bug, _, _, _, ATTACK, DEF, _, _, _, 2, _); 
+%   pokemon(_, NAME, _, bug, _, _, ATTACK, DEF, _, _, _, 2, _)), 
+%   DEF > ATTACK. 
+
+
+% 	d) Quais são os Pokémon que possuem dois tipos?
+% 	pokemon(_, NAME, _, TYPE2, _, _, _, _, _, _, _, _, _), 
+% 	TYPE2 \== ''.
+
+
+% 	e)  Pokémon Blastoise é uma das evoluções do Pokémon Squirtle?
+	evolution2(X, Y) :- 
+    	(evolution(X, W), evolution(W, Y));
+    	evolution(X, Y).
